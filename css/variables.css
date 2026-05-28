@@ -1,0 +1,151 @@
+/* ============================================================
+   variables.css — Design Tokens
+   Portfolio · Tu Nombre
+   ============================================================
+   Este archivo es la única fuente de verdad del diseño.
+   Cualquier color, fuente o espaciado del proyecto
+   referencia una variable de aquí. Para cambiar el aspecto
+   global del portfolio, solo hay que tocar este archivo.
+   ============================================================ */
+
+
+/* ── Imports de Google Fonts ──────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+
+/* ── Tokens globales (modo oscuro por defecto) ────────────── */
+:root {
+
+  /* --- Fondos ---
+     Tres capas de profundidad. base es el fondo de página,
+     surface para tarjetas/secciones, elevated para elementos
+     flotantes como modales o tooltips. */
+  --bg-base:      #0d0f14;
+  --bg-surface:   #13161e;
+  --bg-elevated:  #1a1e28;
+
+  /* --- Acentos ---
+     primary: violeta · usado en títulos destacados, CTAs,
+              enlaces activos y el punto de acento del hero.
+     secondary: teal · usado en badges de tecnología, bordes
+                de tarjetas de proyecto al hover, iconos.
+     danger: rosa/rojo · reservado para alertas o etiquetas
+             especiales. No sobreutilizar. */
+  --accent-primary:   #7c6af7;
+  --accent-primary-dim: rgba(124, 106, 247, 0.15);
+  --accent-secondary: #3ecfb0;
+  --accent-secondary-dim: rgba(62, 207, 176, 0.12);
+  --accent-danger:    #f25c7a;
+
+  /* --- Texto ---
+     Tres niveles de jerarquía visual por opacidad/valor.
+     primary: cuerpo principal y títulos.
+     secondary: subtítulos, metadatos, fechas.
+     muted: placeholders, separadores, texto de relleno. */
+  --text-primary:   #e8eaf0;
+  --text-secondary: #8b90a0;
+  --text-muted:     #555a6a;
+
+  /* --- Bordes ---
+     subtle: separadores internos de tarjetas, líneas HR.
+     default: borde de tarjetas y componentes en reposo.
+     focus: borde de inputs y elementos enfocados
+            (accesibilidad — nunca eliminarlo). */
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-focus:   var(--accent-primary);
+
+  /* --- Tipografía ---
+     display: Playfair Display · solo para nombre y títulos
+              de sección grandes. Máximo impacto, mínimo uso.
+     body: DM Sans · todo el texto de lectura. Legible y
+           moderno sin ser genérico.
+     mono: JetBrains Mono · bloques de código, etiquetas
+           de tecnología, detalles técnicos. */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  /* --- Escala tipográfica (base 16px) ---
+     Progresión modular × 1.25. Cada paso es 25% mayor
+     que el anterior, lo que crea armonía visual natural. */
+  --text-xs:   0.75rem;   /* 12px — metadatos, fechas */
+  --text-sm:   0.875rem;  /* 14px — badges, labels */
+  --text-base: 1rem;      /* 16px — cuerpo de texto */
+  --text-lg:   1.25rem;   /* 20px — subtítulos */
+  --text-xl:   1.563rem;  /* 25px — títulos de sección */
+  --text-2xl:  1.953rem;  /* 31px — títulos grandes */
+  --text-3xl:  2.441rem;  /* 39px — hero subtitle */
+  --text-hero: 3.815rem;  /* 61px — nombre en hero */
+
+  /* --- Pesos tipográficos --- */
+  --weight-light:   300;
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-bold:    700;
+
+  /* --- Interlineado --- */
+  --leading-tight:  1.2;  /* títulos grandes */
+  --leading-normal: 1.6;  /* cuerpo general */
+  --leading-loose:  1.8;  /* párrafos largos, accesibilidad */
+
+  /* --- Espaciado (grid de 8px) ---
+     Todos los márgenes y paddings deben ser múltiplos de 8.
+     Esto crea ritmo visual consistente en toda la página. */
+  --space-1:  0.5rem;    /*  8px */
+  --space-2:  1rem;      /* 16px */
+  --space-3:  1.5rem;    /* 24px */
+  --space-4:  2rem;      /* 32px */
+  --space-6:  3rem;      /* 48px */
+  --space-8:  4rem;      /* 64px */
+  --space-10: 5rem;      /* 80px — padding vertical de secciones */
+  --space-16: 8rem;      /* 128px — separación entre secciones grandes */
+
+  /* --- Layout --- */
+  --container-width: 1100px;   /* ancho máximo del contenido */
+  --text-width:       680px;   /* ancho máximo de párrafos largos */
+  --section-padding:  var(--space-10);
+
+  /* --- Bordes redondeados --- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-full: 9999px;  /* pastillas/badges */
+
+  /* --- Sombras ---
+     Sutiles y cálidas (con tinte violeta) para no romper
+     el tema oscuro. Evitamos sombras negras puras. */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 24px rgba(124, 106, 247, 0.2);
+
+  /* --- Transiciones ---
+     fast: hover de botones, cambios de color.
+     base: aparición de elementos, modales.
+     slow: animaciones de sección, página. */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* --- Z-index escalado ---
+     Evita los z-index arbitrarios como 9999.
+     Cada capa tiene un propósito claro. */
+  --z-base:    1;
+  --z-raised:  10;
+  --z-overlay: 100;
+  --z-nav:     200;
+  --z-modal:   300;
+}
+
+
+/* ── Modo claro (opcional, activable en el futuro) ───────── */
+/* [data-theme="light"] {
+  --bg-base:      #f5f5f7;
+  --bg-surface:   #ffffff;
+  --bg-elevated:  #ededf0;
+  --text-primary:   #0d0f14;
+  --text-secondary: #4a4e5c;
+  --text-muted:     #9094a0;
+  --border-subtle:  rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.12);
+} */

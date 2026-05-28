@@ -1,0 +1,252 @@
+/* ============================================================
+   reset.css — Normalización de estilos
+   Portfolio · Tu Nombre
+   ============================================================
+   El reset elimina las inconsistencias que cada navegador
+   aplica por defecto. Sin esto, Chrome, Firefox y Safari
+   renderizan márgenes, tamaños y fuentes de forma distinta.
+
+   Este reset es una versión moderna (2024) basada en las
+   mejores prácticas actuales. Va más allá del clásico
+   "* { margin: 0; padding: 0 }" añadiendo fixes específicos
+   que afectan a accesibilidad y rendimiento.
+   ============================================================ */
+
+
+/* ── 1. Box model universal ──────────────────────────────── */
+/* Por defecto, el width de un elemento NO incluye su padding
+   ni su border, lo cual es contraintuitivo. Con border-box,
+   width: 200px siempre será 200px, sin sorpresas. */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* ── 2. Reseteo base del documento ───────────────────────── */
+html {
+  /* Permite usar rem con base 10px si quisiéramos, pero
+     mantenemos 16px base por accesibilidad: los usuarios
+     pueden haber cambiado el tamaño de fuente en su navegador
+     y el % lo respeta. */
+  font-size: 100%;
+
+  /* Scroll suave para los enlaces de navegación interna
+     (#proyectos, #contacto, etc.). Respeta la preferencia
+     del sistema si el usuario tiene animaciones reducidas. */
+  scroll-behavior: smooth;
+
+  /* Mejora el renderizado de texto en WebKit (Safari/Chrome).
+     Hace el texto ligeramente más fino y nítido en macOS. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Evita que iOS ajuste automáticamente el tamaño de fuente
+     al rotar el dispositivo. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+
+  /* Aplicamos nuestros tokens desde el principio. */
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+
+  /* Evita scroll horizontal accidental por elementos
+     que se salen del contenedor. */
+  overflow-x: hidden;
+
+  /* Mejor renderizado tipográfico en todos los navegadores. */
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ── 3. Elementos de bloque ──────────────────────────────── */
+/* Elimina márgenes por defecto de todos los elementos de
+   bloque. Preferimos controlar el espaciado explícitamente. */
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote,
+ul, ol, dl, dd,
+fieldset, legend,
+pre {
+  margin: 0;
+  padding: 0;
+}
+
+/* Los títulos no deben heredar tamaño de fuente por defecto.
+   Los estilizaremos explícitamente en cada sección. */
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+
+/* ── 4. Listas ───────────────────────────────────────────── */
+/* Quitamos los bullets y la indentación por defecto.
+   Cuando queramos una lista visible la estilizamos a mano. */
+ul, ol {
+  list-style: none;
+}
+
+
+/* ── 5. Imágenes y medios ────────────────────────────────── */
+/* Las imágenes son inline por defecto (como texto), lo que
+   crea un hueco inferior extraño. Con block lo evitamos. */
+img, video, canvas, svg {
+  display: block;
+}
+
+/* Evita que una imagen desborde su contenedor padre aunque
+   su tamaño natural sea mayor. */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hereda la fuente del padre para evitar que SVG use una
+   fuente diferente si tiene texto interno. */
+svg {
+  font: inherit;
+  fill: currentColor;
+}
+
+
+/* ── 6. Tipografía heredada en formularios ───────────────── */
+/* Los inputs, botones y selects NO heredan la fuente del
+   body por defecto en muchos navegadores. Esto los iguala. */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Elimina el borde por defecto de algunos navegadores. */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* El textarea no debe poder agrandarse horizontalmente,
+   solo verticalmente, para no romper el layout. */
+textarea {
+  resize: vertical;
+}
+
+
+/* ── 7. Enlaces ──────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accesibilidad: el foco visible en teclado es obligatorio.
+   Nunca eliminarlo sin proporcionar una alternativa. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Quitamos el outline por defecto del ratón (no del teclado).
+   :focus-visible solo activa cuando se navega con teclado. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ── 8. Tablas ───────────────────────────────────────────── */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ── 9. Scrollbar personalizada ──────────────────────────── */
+/* Solo en navegadores WebKit (Chrome, Safari, Edge).
+   Firefox tiene su propia propiedad (scrollbar-color). */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-default) var(--bg-base);
+}
+
+
+/* ── 10. Selección de texto ──────────────────────────────── */
+/* Color del texto seleccionado con el cursor. */
+::selection {
+  background-color: var(--accent-primary-dim);
+  color: var(--text-primary);
+}
+
+
+/* ── 11. Reducción de movimiento (accesibilidad) ─────────── */
+/* Muy importante: algunos usuarios tienen configurado su
+   sistema operativo para reducir animaciones (por epilepsia,
+   mareos, etc.). Esta media query desactiva las transiciones
+   para ellos. SIEMPRE incluirla cuando uses animaciones. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ── 12. Utilidades mínimas de layout ────────────────────── */
+/* Contenedor centrado reutilizable. Se usará en todas las
+   secciones: <div class="container"> */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Versión estrecha para texto largo (sobre mí, etc.) */
+.container--narrow {
+  max-width: var(--text-width);
+}
+
+/* Clase de accesibilidad: oculta visualmente pero legible
+   por lectores de pantalla. Usarla para labels de iconos,
+   skip links, etc. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
