@@ -138,14 +138,36 @@
 }
 
 
-/* ── Modo claro (opcional, activable en el futuro) ───────── */
-/* [data-theme="light"] {
+/* ── Modo claro ──────────────────────────────────────────── */
+/*
+  Solo sobreescribimos las variables que cambian entre temas.
+  Todo lo demás (fuentes, espaciado, radios) lo hereda de :root.
+  El selector [data-theme="light"] se activa cuando darkmode.js
+  pone ese valor en el atributo data-theme del <html>.
+*/
+[data-theme="light"] {
+  /* Fondos — invertidos respecto al modo oscuro */
   --bg-base:      #f5f5f7;
   --bg-surface:   #ffffff;
   --bg-elevated:  #ededf0;
+
+  /* Texto — oscuro sobre fondo claro */
   --text-primary:   #0d0f14;
   --text-secondary: #4a4e5c;
   --text-muted:     #9094a0;
+
+  /* Bordes — sutiles en claro */
   --border-subtle:  rgba(0, 0, 0, 0.06);
   --border-default: rgba(0, 0, 0, 0.12);
-} */
+
+  /* Acentos — ligeramente más saturados para mantener contraste */
+  --accent-primary:        #5b4de0;
+  --accent-primary-dim:    rgba(91, 77, 224, 0.1);
+  --accent-secondary:      #2aad93;
+  --accent-secondary-dim:  rgba(42, 173, 147, 0.1);
+
+  /* Sombras — más visibles sobre fondo claro */
+  --shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md:   0 4px 24px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 24px rgba(91, 77, 224, 0.15);
+}
