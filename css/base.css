@@ -201,7 +201,13 @@ main > section:nth-child(even) {
   left: 0;
   right: 0;
   z-index: var(--z-nav);
-  background-color: rgba(13, 15, 20, 0.85);
+  /*
+    Usamos una variable CSS para el color base del nav en vez de
+    un rgba hardcodeado. Así el modo claro puede sobreescribirla.
+    La variable --nav-bg se define aquí y se sobreescribe con
+    el selector [data-theme="light"] al final de este archivo.
+  */
+  background-color: var(--nav-bg, rgba(13, 15, 20, 0.85));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);  /* Safari */
   border-bottom: 1px solid var(--border-subtle);
@@ -210,7 +216,7 @@ main > section:nth-child(even) {
 
 /* Cuando se ha scrolleado, la barra se vuelve más opaca */
 .nav--scrolled {
-  background-color: rgba(13, 15, 20, 0.97);
+  background-color: var(--nav-bg-scrolled, rgba(13, 15, 20, 0.97));
 }
 
 .nav__inner {
@@ -469,4 +475,21 @@ main {
     flex-direction: column;
     text-align: center;
   }
+}
+
+
+/* ── Nav en modo claro ────────────────────────────────────── */
+/*
+  Sobreescribimos las variables del nav para modo claro.
+  El fondo pasa de negro semitransparente a blanco semitransparente,
+  y el borde inferior también se adapta para ser visible sobre
+  fondos claros.
+*/
+[data-theme="light"] {
+  --nav-bg:         rgba(245, 245, 247, 0.88);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.97);
+}
+
+[data-theme="light"] .nav {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
 }
