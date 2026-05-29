@@ -274,10 +274,14 @@
             </svg>
           </a>
           <a href="mailto:tu@email.com" aria-label="Enviar email">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
+            <!--
+              Icono de email con fill="currentColor" para que herede
+              el color del enlace padre igual que GitHub y LinkedIn.
+              El path dibuja el sobre completo incluyendo la flecha V
+              del interior, todo como una sola forma rellena.
+            -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
           </a>
         </div>
@@ -327,16 +331,16 @@
           <!-- Texto -->
           <div class="about__text">
             <p class="about__lead" data-i18n="about_lead">
-              Soy estudiante de DAM con especialización en IA y Big Data,
-              apasionado por construir sistemas que procesan información
-              de forma inteligente y generan valor real.
+              Desarrollador backend con formación en DAM y especialización
+              en IA y Big Data, apasionado por construir sistemas que
+              procesan información de forma inteligente y generan valor real.
             </p>
             <p data-i18n="about_body">
               Mi trabajo combina el rigor del desarrollo backend con la
               curiosidad por los modelos de lenguaje, la visión artificial
               y el análisis de datos a gran escala. Busco mi primera
-              oportunidad en un equipo donde seguir creciendo y aportar
-              desde el primer día.
+              oportunidad profesional en un equipo donde seguir creciendo
+              y aportar desde el primer día.
             </p>
 
             <!-- Datos personales rápidos -->
@@ -728,10 +732,8 @@
 
         <div class="contact__links">
           <a href="mailto:tu@email.com" class="contact__item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
             <span>tu@email.com</span>
           </a>
