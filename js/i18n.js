@@ -98,7 +98,7 @@ const translations = {
 
     /* Footer */
     footer_built:       'Construido con',
-    footer_by:          'por Tu Nombre ·',
+    footer_by:          'por Daniel Marin Pacheco ·',
     footer_top:         'Volver arriba',
   },
 
@@ -179,7 +179,7 @@ const translations = {
 
     /* Footer */
     footer_built:       'Built with',
-    footer_by:          'by Your Name ·',
+    footer_by:          'by Daniel Marin Pacheco ·',
     footer_top:         'Back to top',
   }
 };
