@@ -1,7 +1,7 @@
 # Daniel Marin Pacheco — Portfolio
 
 > Portfolio personal de desarrollo backend con especialización en IA y Big Data.
-> Disponible en: **[tunombre.github.io](https://tunombre.github.io)**
+> Disponible en: **[DanielMarinPacheco.github.io](https://DanielMarinPacheco.github.io)**
 
 ---
 
@@ -17,9 +17,9 @@ sin pasos de compilación.
 
 | Proyecto | Tecnologías | Descripción |
 |---|---|---|
-| [Sistema RAG sobre Autismo](https://github.com/tunombre/rag-autismo) | Python · LangChain · RAG | Pipeline de Retrieval-Augmented Generation para consultar documentación especializada con lenguaje natural |
-| [Analizador de postura](https://github.com/tunombre/posture-analyzer) | Python · OpenCV · MediaPipe | Análisis de postura corporal en tiempo real mediante visión artificial |
-| [API Spring Boot](https://github.com/tunombre/spring-boot-api) | Java · Spring Boot · REST | API REST con arquitectura limpia y documentación completa |
+| [Sistema RAG sobre Autismo](https://github.com/Damapa03/RAG-Preguntas-y-respuestas-Autismo) | Python · LangChain · RAG | Pipeline de Retrieval-Augmented Generation para consultar documentación especializada con lenguaje natural |
+| [Analizador de postura](https://github.com/Damapa03/Exercise-Analizer) | Python · OpenCV · MediaPipe | Análisis de postura corporal en tiempo real mediante visión artificial |
+| [API Spring Boot](https://github.com/Damapa03/API_REST_SEGURA2) | Java · Spring Boot · REST | API REST con arquitectura limpia y documentación completa |
 
 ---
 
@@ -79,7 +79,7 @@ GitHub Pages      — despliegue automático desde rama main
 No hay pasos de instalación. Solo clona y abre:
 
 ```bash
-git clone https://github.com/tunombre/tunombre.github.io
+git clone https://github.com/Damapa03/DanielMarinPacheco.github.io.git
 cd tunombre.github.io
 
 # Opción A — extensión Live Server de VS Code (recomendado)
