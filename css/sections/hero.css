@@ -1,0 +1,308 @@
+/* ============================================================
+   hero.css — Sección de presentación principal
+   ============================================================
+   El hero es lo primero que ve cualquier visitante. Su trabajo
+   es responder en 3 segundos: quién eres, qué haces y qué
+   debe hacer el visitante a continuación.
+
+   Estructura visual:
+     - Fondo con grid de puntos sutil (CSS puro, sin imágenes)
+     - Badge de disponibilidad con punto pulsante
+     - Nombre en Playfair Display a tamaño hero
+     - Subtítulo con efecto typewriter
+     - Descripción breve
+     - Dos CTAs (proyectos + contacto)
+     - Iconos de redes sociales
+     - Flecha de scroll hacia abajo
+   ============================================================ */
+
+
+/* ── Layout base ──────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  display: flex;
+  align-items: center;
+  overflow: hidden;          /* recorta el grid decorativo */
+
+  /*
+    No usamos padding-block del .section base aquí porque
+    el hero tiene sus propias reglas de altura mínima.
+    Añadimos padding propio para no pegar el contenido
+    contra los bordes en pantallas pequeñas.
+  */
+  padding-block: var(--space-16) var(--space-10);
+}
+
+
+/* ── Fondo con grid de puntos ─────────────────────────────── */
+/*
+  El grid de puntos es un truco CSS clásico: usamos un
+  background-image con dos radial-gradient para crear puntos.
+  El truco es que el color del punto coincide con --text-muted
+  y el fondo es transparente, así respeta cualquier fondo.
+
+  No necesitamos ninguna imagen externa, es 100% CSS.
+*/
+.hero__bg-grid {
+  position: absolute;
+  inset: 0;           /* equivale a top/right/bottom/left: 0 */
+  background-image:
+    radial-gradient(circle, var(--text-muted) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.18;
+  pointer-events: none;   /* el grid no intercepta clics del usuario */
+  z-index: var(--z-base);
+}
+
+/*
+  Degradado encima del grid para que se desvanezca hacia
+  los bordes y no compita con el contenido.
+*/
+.hero__bg-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    transparent 40%,
+    var(--bg-base) 100%
+  );
+}
+
+
+/* ── Contenido ────────────────────────────────────────────── */
+.hero__content {
+  position: relative;
+  z-index: var(--z-raised);   /* encima del grid */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  max-width: 780px;
+}
+
+
+/* ── Badge de disponibilidad ──────────────────────────────── */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(62, 207, 176, 0.3);
+  background-color: var(--accent-secondary-dim);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--accent-secondary);
+  letter-spacing: 0.04em;
+}
+
+/*
+  El punto verde pulsante usa una animación keyframe.
+  @keyframes se define al final del archivo para mantener
+  los estilos del componente juntos y la animación separada.
+*/
+.hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-secondary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+
+/* ── Título principal (nombre) ────────────────────────────── */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.03em;
+}
+
+/*
+  El punto final del nombre usa el color de acento primario.
+  Es un detalle pequeño pero da personalidad y coherencia
+  con el punto del logo en la navegación.
+*/
+.hero__title-dot {
+  color: var(--accent-primary);
+}
+
+
+/* ── Subtítulo con typewriter ─────────────────────────────── */
+.hero__subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  color: var(--accent-primary);
+  min-height: 1.6em;    /* evita salto de layout cuando el texto cambia */
+  letter-spacing: -0.01em;
+}
+
+/*
+  El cursor parpadeante se implementa con un pseudo-elemento
+  ::after en el span del typewriter. Es más semántico que
+  añadir un caracter especial al DOM.
+*/
+#typewriter::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--accent-primary);
+  margin-left: 2px;
+}
+
+
+/* ── Descripción ──────────────────────────────────────────── */
+.hero__description {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-loose);
+  max-width: 560px;
+}
+
+
+/* ── Botones CTA ──────────────────────────────────────────── */
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-1);
+}
+
+
+/* ── Iconos sociales ──────────────────────────────────────── */
+.hero__social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.hero__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hero__social a:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+}
+
+
+/* ── Flecha de scroll ─────────────────────────────────────── */
+/*
+  Posicionada de forma absoluta en la parte inferior central
+  del hero. Anima verticalmente para llamar la atención.
+*/
+.hero__scroll-hint {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-hint:hover {
+  color: var(--text-secondary);
+}
+
+
+/* ── Animaciones ──────────────────────────────────────────── */
+
+/* Punto pulsante del badge */
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* Cursor del typewriter */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Flecha de scroll */
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+
+/* ── Animaciones de entrada ───────────────────────────────── */
+/*
+  Los elementos del hero aparecen escalonados al cargar
+  la página (staggered animation).
+  Cada elemento tiene un animation-delay diferente.
+*/
+.hero__badge,
+.hero__title,
+.hero__subtitle,
+.hero__description,
+.hero__cta,
+.hero__social {
+  animation: fadeUp var(--transition-slow) ease both;
+}
+
+.hero__badge       { animation-delay: 0.1s; }
+.hero__title       { animation-delay: 0.2s; }
+.hero__subtitle    { animation-delay: 0.35s; }
+.hero__description { animation-delay: 0.45s; }
+.hero__cta         { animation-delay: 0.55s; }
+.hero__social      { animation-delay: 0.65s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero__title {
+    /* En móvil el nombre se reduce para no desbordarse */
+    font-size: clamp(2.4rem, 10vw, var(--text-hero));
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-lg);
+  }
+
+  .hero__description {
+    font-size: var(--text-base);
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

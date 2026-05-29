@@ -1,0 +1,126 @@
+/* ============================================================
+   skills.css — Sección de habilidades
+   ============================================================ */
+ 
+/* ── Grid de categorías ───────────────────────────────────── */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+ 
+/* ── Tarjeta de categoría ─────────────────────────────────── */
+.skills__category {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: border-color var(--transition-base);
+}
+ 
+.skills__category:hover {
+  border-color: rgba(124, 106, 247, 0.3);
+}
+ 
+.skills__category h3 {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: var(--space-3);
+}
+ 
+/* ── Items de habilidad ───────────────────────────────────── */
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+ 
+.skill-item:last-child {
+  border-bottom: none;
+}
+ 
+.skill-name {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+ 
+/*
+  El nivel se muestra como una serie de puntos (●●●○).
+  Se genera con CSS usando content: y el atributo data-level.
+  Tres niveles: beginner (1 punto), intermediate (2), advanced (3).
+*/
+.skill-level {
+  display: flex;
+  gap: 4px;
+}
+ 
+/* Generamos tres puntos para todos los niveles */
+.skill-level::before,
+.skill-level::after {
+  content: '';
+}
+ 
+/* Cada punto es un elemento inline-block */
+.skill-item .skill-level {
+  --dot-size: 7px;
+}
+ 
+/* Usamos box-shadow para crear los puntos sin más HTML */
+.skill-level {
+  width: calc(var(--dot-size, 7px) * 3 + 4px * 2);
+  height: var(--dot-size, 7px);
+  position: relative;
+}
+ 
+/* Tres puntos con posición absoluta */
+.skill-item::after {
+  content: '';
+  display: flex;
+  gap: 4px;
+}
+ 
+/*
+  Enfoque alternativo más limpio: usamos box-shadow para
+  dibujar los tres puntos desde un único pseudo-elemento.
+  Los puntos activos usan --accent-primary, los inactivos --border-default.
+*/
+.skill-level {
+  position: relative;
+  width: 36px;
+  height: 8px;
+}
+ 
+.skill-level::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /* Todos los niveles tienen al menos el primer punto activo */
+  background-color: var(--accent-primary);
+  /* Sombras que forman el segundo y tercer punto */
+  box-shadow:
+    12px 0 0 var(--border-default),   /* punto 2 (inactivo por defecto) */
+    24px 0 0 var(--border-default);   /* punto 3 (inactivo por defecto) */
+}
+ 
+/* Intermedio: segundo punto activo */
+[data-level="intermediate"] .skill-level::before {
+  box-shadow:
+    12px 0 0 var(--accent-primary),
+    24px 0 0 var(--border-default);
+}
+ 
+/* Avanzado: todos los puntos activos */
+[data-level="advanced"] .skill-level::before {
+  box-shadow:
+    12px 0 0 var(--accent-primary),
+    24px 0 0 var(--accent-primary);
+}

@@ -1,0 +1,129 @@
+/* ============================================================
+   experience.css — Sección de trayectoria (timeline)
+   ============================================================ */
+ 
+/* ── Timeline vertical ────────────────────────────────────── */
+/*
+  La línea vertical de la timeline se crea con un ::before
+  en el contenedor ol, sin elementos HTML adicionales.
+*/
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
+  margin-inline: auto;
+}
+ 
+/* Línea vertical continua */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;         /* centrada con el marcador */
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border-default) 10%,
+    var(--border-default) 90%,
+    transparent
+  );
+}
+ 
+/* ── Item de timeline ─────────────────────────────────────── */
+.timeline__item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--space-3);
+  padding-bottom: var(--space-6);
+  position: relative;
+}
+ 
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+ 
+/* ── Marcador (punto en la línea) ─────────────────────────── */
+.timeline__marker {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-elevated);
+  border: 2px solid var(--accent-primary);
+  flex-shrink: 0;
+  position: relative;
+  z-index: var(--z-raised);
+  margin-top: 2px;
+  transition: background-color var(--transition-base);
+}
+ 
+.timeline__item:hover .timeline__marker {
+  background-color: var(--accent-primary-dim);
+}
+ 
+/* Punto interior del marcador */
+.timeline__marker::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-primary);
+  opacity: 0.7;
+}
+ 
+/* ── Contenido del item ───────────────────────────────────── */
+.timeline__content {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+ 
+.timeline__item:last-child .timeline__content {
+  border-bottom: none;
+}
+ 
+.timeline__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+ 
+.timeline__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+ 
+/* Badge del tipo (Formación / Proyecto / Trabajo) */
+.timeline__type {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  border: 1px solid rgba(124, 106, 247, 0.25);
+}
+ 
+.timeline__title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+ 
+.timeline__org {
+  font-size: var(--text-sm);
+  color: var(--accent-secondary);
+  margin-bottom: var(--space-1);
+}
+ 
+.timeline__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}

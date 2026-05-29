@@ -1,0 +1,71 @@
+/* ============================================================
+   contact.css — Sección de contacto
+   ============================================================ */
+ 
+.contact {
+  text-align: center;
+}
+ 
+/* ── Intro ────────────────────────────────────────────────── */
+.contact__intro {
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: var(--leading-loose);
+  margin-top: var(--space-2);
+  max-width: 520px;
+  margin-inline: auto;
+}
+ 
+/* ── Lista de canales de contacto ─────────────────────────── */
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  align-items: center;
+}
+ 
+/*
+  Cada ítem de contacto es un enlace con icono + texto.
+  El hover desplaza el icono ligeramente hacia la derecha
+  para dar sensación de interactividad.
+*/
+.contact__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  width: 100%;
+  max-width: 360px;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+ 
+.contact__item:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-secondary);
+  background-color: var(--accent-secondary-dim);
+}
+ 
+.contact__item svg {
+  flex-shrink: 0;
+  color: var(--accent-secondary);
+  transition: transform var(--transition-fast);
+}
+ 
+.contact__item:hover svg {
+  transform: scale(1.15);
+}
+ 
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact__item {
+    max-width: 100%;
+  }
+}

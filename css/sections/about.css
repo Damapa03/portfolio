@@ -1,0 +1,120 @@
+/* ============================================================
+   about.css — Sección sobre mí
+   ============================================================ */
+ 
+/* ── Grid foto + texto ────────────────────────────────────── */
+/*
+  En escritorio: dos columnas, foto a la izquierda, texto a
+  la derecha. En móvil: una sola columna, foto primero.
+*/
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+ 
+/* ── Foto / imagen ────────────────────────────────────────── */
+.about__image-wrap {
+  position: relative;
+  max-width: 360px;
+}
+ 
+.about__photo {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  aspect-ratio: 1 / 1;     /* cuadrada */
+  filter: grayscale(20%);  /* sutil desaturación para cohesión */
+  transition: filter var(--transition-base);
+}
+ 
+.about__photo:hover {
+  filter: grayscale(0%);
+}
+ 
+/*
+  Marco decorativo desplazado: un borde de acento que aparece
+  detrás de la foto, desplazado 12px hacia abajo y a la derecha.
+  Se crea con un pseudo-elemento ::after del contenedor.
+*/
+.about__image-frame {
+  position: absolute;
+  inset: 12px -12px -12px 12px;
+  border: 2px solid var(--accent-primary);
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  opacity: 0.4;
+  transition: opacity var(--transition-base);
+}
+ 
+.about__image-wrap:hover .about__image-frame {
+  opacity: 0.7;
+}
+ 
+/* ── Texto ────────────────────────────────────────────────── */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+ 
+.about__lead {
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  line-height: var(--leading-normal);
+  font-weight: var(--weight-light);
+}
+ 
+.about__text p:not(.about__lead) {
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-loose);
+}
+ 
+/* ── Datos personales (tabla de hechos) ───────────────────── */
+.about__facts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-3);
+  background-color: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+ 
+.about__facts li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+}
+ 
+.about__fact-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  align-self: center;
+}
+ 
+/* ── Botones de CV ────────────────────────────────────────── */
+.about__cv {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+ 
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+ 
+  .about__image-wrap {
+    max-width: 260px;
+    margin-inline: auto;
+  }
+}

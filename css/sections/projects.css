@@ -1,0 +1,274 @@
+/* ============================================================
+   projects.css — Sección de proyectos
+   ============================================================
+   Esta sección tiene tres partes:
+     1. Botones de filtro por categoría
+     2. Grid de tarjetas de proyecto
+     3. Animaciones de filtrado (mostrar/ocultar)
+
+   Las tarjetas tienen dos variantes:
+     - Normal: diseño estándar
+     - Featured (.project-card--featured): más destacada visualmente
+       con borde de acento y fondo ligeramente más elevado.
+   ============================================================ */
+
+
+/* ── Botones de filtro ────────────────────────────────────── */
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+}
+
+.filter-btn--active {
+  background-color: var(--accent-primary-dim);
+  border-color: rgba(124, 106, 247, 0.4);
+  color: var(--accent-primary);
+}
+
+
+/* ── Grid de tarjetas ─────────────────────────────────────── */
+/*
+  auto-fill con minmax crea automáticamente tantas columnas
+  como quepan. Con min 320px y max 1fr, en escritorio salen
+  3 columnas, en tablet 2, en móvil 1. Sin media queries.
+*/
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-3);
+}
+
+
+/* ── Tarjeta de proyecto ──────────────────────────────────── */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  gap: var(--space-2);
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+
+  /*
+    Las tarjetas empiezan con opacity 1 y son visibles por
+    defecto. El JS gestiona los estados --hidden y --visible
+    al filtrar. Definimos la transición de opacidad aquí.
+  */
+  opacity: 1;
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    opacity 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(62, 207, 176, 0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Variante destacada — borde y fondo diferenciados */
+.project-card--featured {
+  background-color: var(--bg-elevated);
+  border-color: rgba(124, 106, 247, 0.3);
+}
+
+.project-card--featured:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Estados de filtrado gestionados por main.js */
+.project-card--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-card--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* ── Cabecera de tarjeta ──────────────────────────────────── */
+.project-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+/*
+  El número de proyecto (01, 02, 03) es un detalle visual
+  que da sensación de colección ordenada. Se posiciona
+  en la esquina superior izquierda.
+*/
+.project-card__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+
+/* ── Cuerpo de tarjeta ────────────────────────────────────── */
+.project-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+}
+
+.project-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+
+  /*
+    flex-grow: 1 hace que la descripción ocupe todo el espacio
+    disponible, empujando el footer de la tarjeta siempre abajo.
+    Esto alinea los pies de todas las tarjetas en la misma línea.
+  */
+  flex-grow: 1;
+}
+
+
+/* ── Pie de tarjeta ───────────────────────────────────────── */
+.project-card__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.project-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.project-card__link:hover {
+  color: var(--accent-secondary);
+}
+
+/* Flecha animada al final del enlace */
+.project-card__link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.project-card__link:hover::after {
+  transform: translateX(4px);
+}
+
+
+/* ── Decoración de la tarjeta destacada ──────────────────── */
+/*
+  Un brillo sutil en la esquina superior derecha de la tarjeta
+  featured. Creado con un pseudo-elemento, sin imágenes.
+*/
+.project-card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(
+    circle at top right,
+    rgba(124, 106, 247, 0.12),
+    transparent 70%
+  );
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+
+/* ── Animación reveal ─────────────────────────────────────── */
+/*
+  Clase base para el ScrollReveal definido en main.js.
+  Los elementos con .reveal empiezan invisibles y se animan
+  al entrar en el viewport.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--transition-slow),
+    transform var(--transition-slow);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*
+  Delay escalonado para tarjetas dentro de un grid.
+  El :nth-child añade un retraso adicional a cada tarjeta
+  para que no aparezcan todas a la vez.
+*/
+.projects__grid .project-card:nth-child(1) { transition-delay: 0s; }
+.projects__grid .project-card:nth-child(2) { transition-delay: 0.1s; }
+.projects__grid .project-card:nth-child(3) { transition-delay: 0.2s; }
+.projects__grid .project-card:nth-child(4) { transition-delay: 0.3s; }
+.projects__grid .project-card:nth-child(5) { transition-delay: 0.4s; }
+.projects__grid .project-card:nth-child(6) { transition-delay: 0.5s; }
+
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    padding: var(--space-3);
+  }
+}
