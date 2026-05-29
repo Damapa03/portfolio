@@ -1,7 +1,7 @@
 # Daniel Marin Pacheco — Portfolio
 
 > Portfolio personal de desarrollo backend con especialización en IA y Big Data.
-> Disponible en: **[DanielMarinPacheco.github.io](https://DanielMarinPacheco.github.io)**
+> Disponible en: **[damapa03.github.io/portfolio/](https://damapa03.github.io/portfolio/)**
 
 ---
 
@@ -79,7 +79,7 @@ GitHub Pages      — despliegue automático desde rama main
 No hay pasos de instalación. Solo clona y abre:
 
 ```bash
-git clone https://github.com/Damapa03/DanielMarinPacheco.github.io.git
+git clone https://github.com/Damapa03/portfolio.git
 cd tunombre.github.io
 
 # Opción A — extensión Live Server de VS Code (recomendado)
