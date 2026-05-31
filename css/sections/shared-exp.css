@@ -1,0 +1,136 @@
+/*============================================================
+   shared-exp.css — Componente compartido: lista de entradas
+   ============================================================
+   Usado por experience.css y education.css.
+   Contiene todos los estilos de .exp-list y .exp-item.
+   ============================================================ */
+
+/* ── Lista de entradas ────────────────────────────────────── */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+/*
+  Grid de dos columnas:
+  izquierda: fecha + badge (ancho fijo 180px)
+  derecha: título, empresa y descripción
+*/
+.exp-item {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+
+.exp-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Columna izquierda — meta ─────────────────────────────── */
+.exp-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: 3px;
+}
+
+.exp-date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Base de todos los badges de tipo */
+.exp-type {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-medium);
+  width: fit-content;
+}
+
+/* Prácticas — violeta */
+.exp-type--intern {
+  background-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  border: 1px solid rgba(124, 106, 247, 0.25);
+}
+
+/* Jornada completa — teal */
+.exp-type--full {
+  background-color: var(--accent-secondary-dim);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(62, 207, 176, 0.25);
+}
+
+/* Media jornada / parcial — coral */
+.exp-type--part {
+  background-color: rgba(242, 92, 122, 0.1);
+  color: var(--accent-danger);
+  border: 1px solid rgba(242, 92, 122, 0.2);
+}
+
+/* Título oficial — gris neutro */
+.exp-type--edu {
+  background-color: rgba(139, 144, 160, 0.12);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+
+/* Curso / certificación — teal suave */
+.exp-type--course {
+  background-color: var(--accent-secondary-dim);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(62, 207, 176, 0.2);
+}
+
+/* ── Columna derecha — contenido ──────────────────────────── */
+.exp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exp-title {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+}
+
+.exp-company {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--accent-secondary);
+}
+
+.exp-desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  margin-top: 2px;
+}
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .exp-item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .exp-meta {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+}
+
+/* 
