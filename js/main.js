@@ -116,8 +116,13 @@ function initTypewriter() {
    la categoría seleccionada (data-category en cada <article>).
 ════════════════════════════════════════════════════════════ */
 function initProjectFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  const filterBtns  = document.querySelectorAll('.filter-btn');
+  /*
+    Antes se buscaba '.project-card'. Al rediseñar los proyectos
+    como lista horizontal los elementos pasaron a llamarse
+    '.project-row', así que actualizamos el selector aquí.
+  */
+  const projectRows = document.querySelectorAll('.project-row');
 
   if (!filterBtns.length) return;
 
@@ -126,37 +131,24 @@ function initProjectFilters() {
 
       /* Quitar estado activo de todos los botones */
       filterBtns.forEach((b) => b.classList.remove('filter-btn--active'));
-      /* Activar el botón clickado */
       btn.classList.add('filter-btn--active');
 
-      const filter = btn.dataset.filter;   /* 'all', 'ia', 'backend', 'bigdata' */
+      const filter = btn.dataset.filter;
 
-      projectCards.forEach((card) => {
-        const category = card.dataset.category;
+      projectRows.forEach((row) => {
+        const category = row.dataset.category;
         const show     = filter === 'all' || category === filter;
 
         if (show) {
-          /*
-            Eliminamos la clase primero para resetear cualquier
-            estado previo, luego añadimos la de entrada.
-            El CSS de projects.css define la transición de opacidad.
-          */
-          card.classList.remove('project-card--hidden');
-          card.classList.add('project-card--visible');
-          /* Eliminar display:none con un pequeño delay para que
-             la transición CSS tenga tiempo de activarse */
-          card.style.display = '';
+          row.classList.remove('project-row--hidden');
+          row.classList.add('project-row--visible');
+          row.style.display = '';
         } else {
-          card.classList.remove('project-card--visible');
-          card.classList.add('project-card--hidden');
-          /*
-            Esperamos a que termine la transición (300ms) antes
-            de ocultar con display:none, para que el fade-out
-            sea visible antes de que el elemento desaparezca.
-          */
+          row.classList.remove('project-row--visible');
+          row.classList.add('project-row--hidden');
           setTimeout(() => {
-            if (card.classList.contains('project-card--hidden')) {
-              card.style.display = 'none';
+            if (row.classList.contains('project-row--hidden')) {
+              row.style.display = 'none';
             }
           }, 300);
         }

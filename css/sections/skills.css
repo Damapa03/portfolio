@@ -1,14 +1,14 @@
 /* ============================================================
    skills.css — Sección de habilidades
    ============================================================ */
- 
+
 /* ── Grid de categorías ───────────────────────────────────── */
 .skills__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: var(--space-4);
 }
- 
+
 /* ── Tarjeta de categoría ─────────────────────────────────── */
 .skills__category {
   background-color: var(--bg-surface);
@@ -17,11 +17,11 @@
   padding: var(--space-4);
   transition: border-color var(--transition-base);
 }
- 
+
 .skills__category:hover {
   border-color: rgba(124, 106, 247, 0.3);
 }
- 
+
 .skills__category h3 {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -30,97 +30,62 @@
   color: var(--accent-primary);
   margin-bottom: var(--space-3);
 }
- 
-/* ── Items de habilidad ───────────────────────────────────── */
-.skill-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-block: 8px;
-  border-bottom: 1px solid var(--border-subtle);
-}
- 
-.skill-item:last-child {
-  border-bottom: none;
-}
- 
-.skill-name {
-  font-size: var(--text-sm);
-  color: var(--text-primary);
-}
- 
+
+/* ── Tags por categoría (opción A) ───────────────────────── */
 /*
-  El nivel se muestra como una serie de puntos (●●●○).
-  Se genera con CSS usando content: y el atributo data-level.
-  Tres niveles: beginner (1 punto), intermediate (2), advanced (3).
+  Chips de color agrupados por dominio. Sin niveles numéricos:
+  la categoría ya comunica el contexto.
 */
-.skill-level {
+.skills__tags {
   display: flex;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
- 
-/* Generamos tres puntos para todos los niveles */
-.skill-level::before,
-.skill-level::after {
-  content: '';
+
+.skill-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+  transition: opacity var(--transition-fast);
 }
- 
-/* Cada punto es un elemento inline-block */
-.skill-item .skill-level {
-  --dot-size: 7px;
+
+.skill-tag:hover {
+  opacity: 0.8;
 }
- 
-/* Usamos box-shadow para crear los puntos sin más HTML */
-.skill-level {
-  width: calc(var(--dot-size, 7px) * 3 + 4px * 2);
-  height: var(--dot-size, 7px);
-  position: relative;
+
+/* Violeta — lenguajes */
+.skill-tag--purple {
+  background-color: var(--accent-primary-dim);
+  color: var(--accent-primary);
+  border: 1px solid rgba(124, 106, 247, 0.25);
 }
- 
-/* Tres puntos con posición absoluta */
-.skill-item::after {
-  content: '';
-  display: flex;
-  gap: 4px;
+
+/* Teal — backend */
+.skill-tag--teal {
+  background-color: var(--accent-secondary-dim);
+  color: var(--accent-secondary);
+  border: 1px solid rgba(62, 207, 176, 0.25);
 }
- 
-/*
-  Enfoque alternativo más limpio: usamos box-shadow para
-  dibujar los tres puntos desde un único pseudo-elemento.
-  Los puntos activos usan --accent-primary, los inactivos --border-default.
-*/
-.skill-level {
-  position: relative;
-  width: 36px;
-  height: 8px;
+
+/* Coral — IA & Data */
+.skill-tag--coral {
+  background-color: rgba(242, 92, 122, 0.1);
+  color: var(--accent-danger);
+  border: 1px solid rgba(242, 92, 122, 0.2);
 }
- 
-.skill-level::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  /* Todos los niveles tienen al menos el primer punto activo */
-  background-color: var(--accent-primary);
-  /* Sombras que forman el segundo y tercer punto */
-  box-shadow:
-    12px 0 0 var(--border-default),   /* punto 2 (inactivo por defecto) */
-    24px 0 0 var(--border-default);   /* punto 3 (inactivo por defecto) */
+
+/* Gris — herramientas */
+.skill-tag--gray {
+  background-color: rgba(139, 144, 160, 0.1);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
 }
- 
-/* Intermedio: segundo punto activo */
-[data-level="intermediate"] .skill-level::before {
-  box-shadow:
-    12px 0 0 var(--accent-primary),
-    24px 0 0 var(--border-default);
-}
- 
-/* Avanzado: todos los puntos activos */
-[data-level="advanced"] .skill-level::before {
-  box-shadow:
-    12px 0 0 var(--accent-primary),
-    24px 0 0 var(--accent-primary);
-}
+
+/* Modo claro: ajuste de fondos */
+[data-theme="light"] .skill-tag--purple { background-color: rgba(91, 77, 224, 0.08); }
+[data-theme="light"] .skill-tag--teal   { background-color: rgba(42, 173, 147, 0.08); }
+[data-theme="light"] .skill-tag--coral  { background-color: rgba(242, 92, 122, 0.07); }

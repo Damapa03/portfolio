@@ -1,4 +1,4 @@
-/* ============================================================
+/*============================================================
    projects.css — Sección de proyectos
    ============================================================
    Esta sección tiene tres partes:
@@ -270,5 +270,189 @@
 
   .project-card {
     padding: var(--space-3);
+  }
+}
+/* ============================================================
+   Proyectos — vista de lista horizontal
+   ============================================================
+   Sustituye el grid de tarjetas por filas horizontales.
+   Cada fila tiene: número · título+desc · tags · enlace.
+   El número se oculta en móvil para ahorrar espacio.
+   ============================================================ */
+
+.projects__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  Cada fila es un grid de cuatro columnas:
+  [número] [cuerpo — flex-grow] [tags] [enlace]
+  El cuerpo crece para ocupar el espacio disponible.
+*/
+.project-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+  border-radius: var(--radius-md);
+}
+
+.project-row:last-child {
+  border-bottom: none;
+}
+
+.project-row:hover {
+  background-color: var(--bg-elevated);
+  /* Compensamos el padding con margin negativo para que
+     el fondo se extienda más allá del contenido */
+  padding-inline: var(--space-2);
+  margin-inline: calc(-1 * var(--space-2));
+}
+
+/* Variante destacada — borde izquierdo de acento */
+.project-row--featured {
+  border-left: 2px solid var(--accent-primary);
+  padding-left: var(--space-3);
+  margin-left: -2px;
+}
+
+/*
+  Estados de filtrado: el JS añade/quita estas clases.
+  La transición de opacidad está declarada en .project-row,
+  así el fade-out es visible antes del display:none.
+*/
+.project-row--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-row--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Número ───────────────────────────────────────────────── */
+.project-row__number {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+/* ── Cuerpo (título + descripción) ───────────────────────── */
+.project-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;    /* permite que el texto se trunque correctamente */
+}
+
+.project-row__title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  transition: color var(--transition-fast);
+}
+
+.project-row:hover .project-row__title {
+  color: var(--accent-primary);
+}
+
+.project-row__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+  /*
+    Truncamos la descripción a dos líneas con -webkit-line-clamp.
+    Es la técnica estándar para truncado multilínea en CSS.
+    El -webkit- prefix es necesario aunque funciona en todos
+    los navegadores modernos.
+  */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Tags ─────────────────────────────────────────────────── */
+.project-row__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  max-width: 200px;
+}
+
+/* ── Enlace ───────────────────────────────────────────────── */
+.project-row__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.project-row__link:hover {
+  color: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.project-row__link::after {
+  content: '→';
+  transition: transform var(--transition-fast);
+}
+
+.project-row__link:hover::after {
+  transform: translateX(3px);
+}
+
+/* ── Responsivo ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .project-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+
+  /* Número oculto en móvil */
+  .project-row__number {
+    display: none;
+  }
+
+  /* Cuerpo ocupa la primera columna */
+  .project-row__body {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Enlace en la segunda columna primera fila */
+  .project-row__link {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  /* Tags debajo, span completo */
+  .project-row__tags {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    max-width: 100%;
   }
 }
