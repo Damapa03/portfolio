@@ -74,31 +74,35 @@ const translations = {
     view_code:          'Ver código',
     view_demo:          'Ver demo',
 
+    /* Navegación — formación */
+    nav_education:      'Formación',
+
     /* Experiencia */
     section_label_exp:  '04 · Experiencia',
-    exp_title:          'Trayectoria',
-    exp1_date:          '2023 — Presente',
-    exp1_type:          'Formación',
-    exp1_title:         'DAM · Especialización en IA y Big Data',
-    exp1_org:           'Centro de estudios, España',
-    exp1_desc:          'Desarrollo de aplicaciones multiplataforma con especialización en inteligencia artificial, modelos de lenguaje, Big Data y arquitecturas backend.',
-    exp2_date:          '2024',
-    exp2_type:          'Proyecto',
-    exp2_title:         'Sistema RAG sobre Autismo',
-    exp2_desc:          'Diseño e implementación de un pipeline RAG completo con ingesta de documentos, embeddings y generación con LLM.',
-    exp3_date:          '2024',
-    exp3_type:          'Proyecto',
-    exp3_title:         'Analizador de postura con visión artificial',
-    exp3_desc:          'Detección y análisis de postura corporal en tiempo real mediante Computer Vision y modelos de estimación de pose.',
+    exp_title:          'Experiencia laboral',
+    exp1_date:          'Mar 2024 — Jun 2024',
+    exp1_type:          'Prácticas',
+    exp1_title:         'Puesto que desempeñaste',
+    exp1_company:       'Nombre de la empresa',
+    exp1_desc:          'Descripción breve de las tareas realizadas: tecnologías usadas, responsabilidades principales y lo que aprendiste o aportaste.',
+
+    /* Formación */
+    section_label_edu:  '05 · Formación',
+    edu_title:          'Formación',
+    edu1_date:          '2021 — 2023',
+    edu1_type:          'Título oficial',
+    edu1_title:         'Técnico Superior en DAM',
+    edu1_center:        'Centro de estudios, España',
+    edu1_desc:          'Desarrollo de Aplicaciones Multiplataforma con especialización en Inteligencia Artificial y Big Data.',
 
     /* Contacto */
-    section_label_contact: '05 · Contacto',
+    section_label_contact: '06 · Contacto',
     contact_title:      'Hablemos',
     contact_intro:      '¿Tienes una oportunidad, un proyecto o simplemente quieres charlar sobre tecnología? Mi bandeja de entrada está abierta.',
 
     /* Footer */
     footer_built:       'Construido con',
-    footer_by:          'por Daniel Marin Pacheco ·',
+    footer_by:          'por Tu Nombre ·',
     footer_top:         'Volver arriba',
   },
 
@@ -155,31 +159,35 @@ const translations = {
     view_code:          'View code',
     view_demo:          'Live demo',
 
+    /* Navigation — education */
+    nav_education:      'Education',
+
     /* Experience */
     section_label_exp:  '04 · Experience',
-    exp_title:          'Journey',
-    exp1_date:          '2023 — Present',
-    exp1_type:          'Education',
-    exp1_title:         'DAM · AI & Big Data specialisation',
-    exp1_org:           'School, Spain',
-    exp1_desc:          'Cross-platform application development with a focus on artificial intelligence, language models, Big Data, and backend architectures.',
-    exp2_date:          '2024',
-    exp2_type:          'Project',
-    exp2_title:         'RAG System on Autism',
-    exp2_desc:          'Design and implementation of a complete RAG pipeline including document ingestion, embeddings, and LLM-based generation.',
-    exp3_date:          '2024',
-    exp3_type:          'Project',
-    exp3_title:         'Exercise posture analyser',
-    exp3_desc:          'Real-time body posture detection and analysis using Computer Vision and pose estimation models.',
+    exp_title:          'Work experience',
+    exp1_date:          'Mar 2024 — Jun 2024',
+    exp1_type:          'Internship',
+    exp1_title:         'Position you held',
+    exp1_company:       'Company name',
+    exp1_desc:          'Brief description of tasks performed: technologies used, main responsibilities and what you learned or contributed.',
+
+    /* Education */
+    section_label_edu:  '05 · Education',
+    edu_title:          'Education',
+    edu1_date:          '2021 — 2023',
+    edu1_type:          'Official degree',
+    edu1_title:         'Higher National Diploma in Cross-Platform App Development',
+    edu1_center:        'School, Spain',
+    edu1_desc:          'Cross-platform application development with specialisation in Artificial Intelligence and Big Data.',
 
     /* Contact */
-    section_label_contact: '05 · Contact',
+    section_label_contact: '06 · Contact',
     contact_title:      'Let\'s talk',
     contact_intro:      'Got an opportunity, a project, or just want to chat about tech? My inbox is open.',
 
     /* Footer */
     footer_built:       'Built with',
-    footer_by:          'by Daniel Marin Pacheco ·',
+    footer_by:          'by Your Name ·',
     footer_top:         'Back to top',
   }
 };
