@@ -69,9 +69,9 @@ const translations = {
     proj1_title:        'Sistema RAG sobre Autismo',
     proj1_desc:         'Pipeline de Retrieval-Augmented Generation que permite consultar documentación especializada sobre el espectro autista con lenguaje natural. Desarrollado como herramienta de apoyo informativo.',
     proj2_title:        'Analizador de postura con visión artificial',
-    proj2_desc:         'Sistema de análisis de postura en tiempo real durante ejercicio físico, usando visión por computador para detectar y corregir la posición corporal mediante landmarks articulares.',
+    proj2_desc:         'Sistema de análisis de postura en tiempo real o video durante el ejercicio físico, usando visión por computador para detectar y corregir la posición corporal mediante landmarks articulares. Utilizable mediante app web conectada con FastAPI al modelo de visión.',
     proj3_title:        'Proyecto Spring Boot',
-    proj3_desc:         'API REST desarrollada con Spring Boot. Descripción pendiente de completar con los detalles del proyecto.',
+    proj3_desc:         'API REST desarrollada con Spring Boot, para la gestión y asignación de tareas a usuarios de la aplicación.',
     view_code:          'Ver código',
     view_demo:          'Ver demo',
 
@@ -155,9 +155,9 @@ const translations = {
     proj1_title:        'RAG System on Autism',
     proj1_desc:         'Retrieval-Augmented Generation pipeline that allows natural language queries on specialised autism spectrum documentation. Built as an informational support tool.',
     proj2_title:        'Exercise posture analyser',
-    proj2_desc:         'Real-time posture analysis system for physical exercise, using computer vision to detect and correct body position through joint landmarks.',
+    proj2_desc:         'Real-time or video posture analysis system for physical exercise, using computer vision to detect and correct body position through joint landmarks. Usable via web app connected with FastAPI to the vision model.',
     proj3_title:        'Spring Boot project',
-    proj3_desc:         'REST API built with Spring Boot. Description pending completion with full project details.',
+    proj3_desc:         'REST API built with Spring Boot, for task management and assignment to users of the application.',
     view_code:          'View code',
     view_demo:          'Live demo',
 
