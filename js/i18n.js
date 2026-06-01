@@ -90,11 +90,15 @@ const translations = {
     /* Formación */
     section_label_edu:  '05 · Formación',
     edu_title:          'Formación',
-    edu1_date:          '2021 — 2023',
-    edu1_type:          'Título oficial',
+    edu1_date:          '2023 — 2025',
+    edu1_type:          'Formación profesional',
     edu1_title:         'Técnico Superior en DAM',
-    edu1_center:        'Centro de estudios, España',
-    edu1_desc:          'Desarrollo de Aplicaciones Multiplataforma con especialización en Inteligencia Artificial y Big Data.',
+    edu1_center:        'IES Rafael Alberti, España',
+
+    edu2_date:          '2025 - 2026',
+    edu2_type:          'Especialización',
+    edu2_title:         'Especialización en IA y Big Data',
+    edu2_center:        'IES Fernando Aguilar, España',
 
     /* Contacto */
     section_label_contact: '06 · Contacto',
@@ -176,11 +180,15 @@ const translations = {
     /* Education */
     section_label_edu:  '05 · Education',
     edu_title:          'Education',
-    edu1_date:          '2021 — 2023',
+    edu1_date:          '2023 — 2025',
     edu1_type:          'Official degree',
     edu1_title:         'Higher National Diploma in Cross-Platform App Development',
-    edu1_center:        'School, Spain',
-    edu1_desc:          'Cross-platform application development with specialisation in Artificial Intelligence and Big Data.',
+    edu1_center:        'IES Rafael Alberti, Spain',
+
+    edu2_date:          '2025 - 2026',
+    edu2_type:          'Specialisation',
+    edu2_title:         'Specialisation in AI and Big Data',
+    edu2_center:        'IES Fernando Aguilar, Spain',
 
     /* Contact */
     section_label_contact: '06 · Contact',
