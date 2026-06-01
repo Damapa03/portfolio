@@ -81,11 +81,11 @@ const translations = {
     /* Experiencia */
     section_label_exp:  '04 · Experiencia',
     exp_title:          'Experiencia laboral',
-    exp1_date:          'Mar 2024 — Jun 2024',
+    exp1_date:          'Abr 2025 — Jun 2025',
     exp1_type:          'Prácticas',
-    exp1_title:         'Puesto que desempeñaste',
-    exp1_company:       'Nombre de la empresa',
-    exp1_desc:          'Descripción breve de las tareas realizadas: tecnologías usadas, responsabilidades principales y lo que aprendiste o aportaste.',
+    exp1_title:         'Desarrollador de aplicación móvil',
+    exp1_company:       'IES Rafael Alberti',
+    exp1_desc:          'Desarrollo de una aplicación móvil para la gestión de horas y tareas de empleados, utilizando Kotlin Multiplatform para crear una app nativa tanto en Android como iOS y base de datos alojada en Supabase. Participación en todas las fases del proyecto: diseño, desarrollo y pruebas.',
 
     /* Formación */
     section_label_edu:  '05 · Formación',
@@ -167,11 +167,11 @@ const translations = {
     /* Experience */
     section_label_exp:  '04 · Experience',
     exp_title:          'Work experience',
-    exp1_date:          'Mar 2024 — Jun 2024',
+    exp1_date:          'Apr 2025 — Jun 2025',
     exp1_type:          'Internship',
-    exp1_title:         'Position you held',
-    exp1_company:       'Company name',
-    exp1_desc:          'Brief description of tasks performed: technologies used, main responsibilities and what you learned or contributed.',
+    exp1_title:         'Mobile application developer',
+    exp1_company:       'IES Rafael Alberti',
+    exp1_desc:          'Development of a mobile application for managing employee hours and tasks, using Kotlin Multiplatform to create a native app for both Android and iOS, with database hosted on Supabase. Involved in all project phases: design, development, and testing.',
 
     /* Education */
     section_label_edu:  '05 · Education',
