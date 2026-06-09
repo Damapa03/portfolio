@@ -72,6 +72,8 @@ const translations = {
     proj2_desc:         'Sistema de análisis de postura en tiempo real o video durante el ejercicio físico, usando visión por computador para detectar y corregir la posición corporal mediante landmarks articulares. Utilizable mediante app web conectada con FastAPI al modelo de visión.',
     proj3_title:        'Proyecto Spring Boot',
     proj3_desc:         'API REST desarrollada con Spring Boot, para la gestión y asignación de tareas a usuarios de la aplicación.',
+    proj4_title:        'Flujo de datos con NiFi',
+    proj4_desc:         'Flujo de datos realizado con NiFi, utilizando un script de Python para la simulación de datos,Flask para una web para visualizar los cambios, kafka para la recepción de mensajes y NiFi para la realización del flujo de datos que recoje de Kafka y los procesa para insertarlos en una base de datos MongoDB.',
     view_code:          'Ver código',
     view_demo:          'Ver demo',
 
@@ -162,6 +164,8 @@ const translations = {
     proj2_desc:         'Real-time or video posture analysis system for physical exercise, using computer vision to detect and correct body position through joint landmarks. Usable via web app connected with FastAPI to the vision model.',
     proj3_title:        'Spring Boot project',
     proj3_desc:         'REST API built with Spring Boot, for task management and assignment to users of the application.',
+    proj4_title:        'NiFi workflow',
+    proj4_desc:         'Data workflow built with NiFi, using a Python script for data simulation, Flask for a web interface to visualize changes, Kafka for message reception, and NiFi to process data from Kafka and insert it into a MongoDB database.',
     view_code:          'View code',
     view_demo:          'Live demo',
 
